@@ -1,0 +1,58 @@
+body {
+  margin:0;
+  font-family:Arial;
+  background: linear-gradient(135deg,#4facfe,#00f2fe,#6a82fb);
+}
+
+.center {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.card {
+  background:rgba(255,255,255,0.2);
+  padding:20px;
+  border-radius:15px;
+  backdrop-filter:blur(10px);
+}
+
+input,button {
+  padding:10px;
+  margin:5px;
+  border:none;
+  border-radius:10px;
+}
+
+header {
+  display:flex;
+  justify-content:space-between;
+  padding:15px;
+  color:white;
+}
+
+.uploadBox {
+  text-align:center;
+  padding:10px;
+}
+
+#gallery {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:10px;
+  padding:10px;
+}
+
+.item {
+  background:rgba(255,255,255,0.2);
+  padding:10px;
+  border-radius:15px;
+  color:white;
+  backdrop-filter:blur(10px);
+}
+
+.item img {
+  width:100%;
+  border-radius:10px;
+}
