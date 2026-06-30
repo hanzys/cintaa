@@ -1,36 +1,43 @@
-<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ocean of Love</title>
-<style>
-*{margin:0;box-sizing:border-box}body{font-family:system-ui;background:linear-gradient(180deg,#001b4d,#0057b8,#00b4ff,#b8f3ff);overflow:hidden;color:#fff}
-.bg{position:fixed;inset:0;background:radial-gradient(circle at 20% 20%,rgba(255,255,255,.15),transparent 25%),radial-gradient(circle at 80% 60%,rgba(255,255,255,.1),transparent 20%)}
-.wave{position:absolute;bottom:0;width:200%;height:180px;background:rgba(255,255,255,.12);border-radius:45%;animation:w 12s linear infinite}
-.wave:nth-child(2){bottom:20px;opacity:.5;animation-duration:18s}
-@keyframes w{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.d{position:absolute;font-size:70px;opacity:.18;animation:swim 20s linear infinite}
-@keyframes swim{0%{transform:translateX(-20vw) translateY(0)}50%{transform:translateX(60vw) translateY(30px)}100%{transform:translateX(120vw) translateY(-10px)}}
-.card{position:relative;z-index:2;max-width:900px;margin:20px auto;background:rgba(255,255,255,.12);backdrop-filter:blur(15px);padding:22px;border-radius:22px;text-align:center}
-.slider{height:420px;position:relative;overflow:hidden;border-radius:18px}.slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:s 18s infinite}.slider img:nth-child(2){animation-delay:6s}.slider img:nth-child(3){animation-delay:12s}@keyframes s{0%,28%{opacity:1}33%,100%{opacity:0}}
-#count{font-size:24px;margin:15px}.letter{margin:18px auto;max-width:700px;line-height:1.8}.heart,.bubble{position:fixed;bottom:-20px}.heart{animation:u 7s linear forwards}.bubble{animation:u2 9s linear forwards}
-@keyframes u{to{transform:translateY(-120vh);opacity:0}}@keyframes u2{to{transform:translateY(-120vh) translateX(50px);opacity:0}}
-</style></head><body><div class=bg><div class=d style="top:12%;animation-delay:0s">🐬</div><div class=d style="top:55%;animation-delay:8s">🐬</div><div class=wave></div><div class="wave"></div></div>
-<div class=card><h1>💙 CINTA NADYA NUR AFIFAH 💙</h1><h3>21 April 2026 — Selamanya ♾️</h3>
-<div class=slider><img src="https://files.catbox.moe/ej1y6h.jpg"><img src="https://files.catbox.moe/wwjtn2.jpg"><img src="https://files.catbox.moe/viy8x4.jpg"></div>
-<div id=count></div>
-<div class=letter id=txt></div>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Couple Gallery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loginBox" class="center">
+  <div class="card">
+    <h2>💙 Login Couple Gallery</h2>
+    <input id="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <button onclick="register()">Register</button>
+  </div>
 </div>
-<script>
-const full=`Untuk Nadya Nur Afifah,
 
-Sejak 21 April 2026, hidupku terasa lebih berwarna. Terima kasih sudah hadir, menemani setiap tawa, mendengarkan setiap cerita, dan menjadi seseorang yang selalu ingin aku perjuangkan.
+<div id="app" style="display:none;">
+  <header>
+    <h1>💙 Our Memories</h1>
+    <button onclick="logout()">Logout</button>
+  </header>
 
-Kalau suatu hari nanti kita menghadapi banyak rintangan, semoga kita tetap saling menggenggam tangan, saling percaya, dan saling menguatkan.
+  <div class="uploadBox">
+    <input id="nama" placeholder="Nama foto">
+    <input type="file" id="file">
+    <button onclick="upload()">Upload</button>
+  </div>
 
-Aku berharap cerita kita bukan hanya tentang hari ini, tetapi tentang banyak hari indah yang akan datang.
+  <div id="gallery"></div>
+</div>
 
-I Love You Forever. 💙🐬`;
-let i=0;function type(){if(i<full.length){txt.textContent+=full[i++];setTimeout(type,35)}}type();
-const s=new Date("2026-04-21T00:00:00");
-setInterval(()=>{let d=Date.now()-s;let day=Math.floor(d/864e5),h=Math.floor(d%864e5/36e5),m=Math.floor(d%36e5/6e4),x=Math.floor(d%6e4/1e3);count.innerHTML="💞 Bersama selama <b>"+day+" hari "+h+" jam "+m+" menit "+x+" detik</b>";},1000);
-setInterval(()=>{let e=document.createElement("div");e.className="heart";e.innerHTML=Math.random()>.5?"💙":"🤍";e.style.left=Math.random()*100+"vw";e.style.fontSize=(18+Math.random()*22)+"px";document.body.appendChild(e);setTimeout(()=>e.remove(),7000)},160);
-setInterval(()=>{let b=document.createElement("div");b.className="bubble";b.innerHTML="🫧";b.style.left=Math.random()*100+"vw";document.body.appendChild(b);setTimeout(()=>b.remove(),9000)},250);
-</script></body></html>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js"></script>
+
+<script src="firebase.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
